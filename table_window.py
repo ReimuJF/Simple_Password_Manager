@@ -79,6 +79,7 @@ class DrawTable(tk.Toplevel):
         iid = self.table.selection()[0]
         data = self.table.item(self.table.focus())['values']
         edit_entry = EditWindow(self, data)
+        edit_entry.wait_visibility() # to avoid errors on linx systems
         edit_entry.grab_set()
         edit_entry.wait_window()
         if data := edit_entry.new_value:
